@@ -1,4 +1,3 @@
-from argparse import ArgumentError
 import json
 import math
 import os
@@ -10,11 +9,11 @@ class SeedMaker:
 
   def get_basis_vectors(self):
     if self.modulus == 2:
-      return json.loads(open("bot_central/xor_triangles/rows2.json", "r").read())
+      return json.loads(open("xor_triangles/rows2.json", "r").read())
     elif self.modulus == 3:
-      return json.loads(open("bot_central/xor_triangles/rows3.json", "r").read())
+      return json.loads(open("xor_triangles/rows3.json", "r").read())
     else:
-      raise ArgumentError(message="Unsupported modulus: " + str(self.modulus))
+      raise ValueError(message="Unsupported modulus: " + str(self.modulus))
 
   def corresponding_integer(self, basis_vector):
     i = 0

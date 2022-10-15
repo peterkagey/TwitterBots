@@ -36,7 +36,7 @@ class BezierCurveDrawer():
         (x4,y4) = p4
         def fx(t):
             return (1-t)**3 * x1 + 3 * (1-t)**2 * t * x2 + 3 * (1-t) * t**2 * x3 + t**3 * x4
-        def fy(t): 
+        def fy(t):
             return (1-t)**3 * y1 + 3 * (1-t)**2 * t * y2 + 3 * (1-t) * t**2 * y3 + t**3 * y4
         return (fx, fy)
 
@@ -47,10 +47,10 @@ class BezierCurveDrawer():
             self.draw.ellipse((x-50, y-50, x+50, y+50), fill=color)
 
     def random_point(self):
-        return (random.randrange(0,self.x_max), random.randrange(0,self.y_max)) 
+        return (random.randrange(0,self.x_max), random.randrange(0,self.y_max))
 
     def random_color(self):
-        return (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)) 
+        return (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255))
 
     # rand_p3 = (random.randrange(0,x_max), random.randrange(0,y_max))
     # rand_p4 = (random.randrange(0,x_max), random.randrange(0,y_max))
@@ -66,9 +66,9 @@ class BezierCurveDrawer():
         (x4, y4, z4) = (random.randrange(0,255),random.randrange(0,255),random.randrange(0,255)) # (x1,y1,z1)
         def fx(t):
             return (1-t)**3 * x1 + 3 * (1-t)**2 * t * x2 + 3 * (1-t) * t**2 * x3 + t**3 * x4
-        def fy(t): 
+        def fy(t):
             return (1-t)**3 * y1 + 3 * (1-t)**2 * t * y2 + 3 * (1-t) * t**2 * y3 + t**3 * y4
-        def fz(t): 
+        def fz(t):
             return (1-t)**3 * z1 + 3 * (1-t)**2 * t * z2 + 3 * (1-t) * t**2 * z3 + t**3 * z4
         return (fx, fy, fz)
 
@@ -94,6 +94,6 @@ class BezierCurveDrawer():
             self.p3 = self.random_point()
             self.p4 = self.random_point()
 
-        filename = "/Users/peter/Programming/parametric.png"
+        filename = "/tmp/latest_botzier_curve.png"
         self.img.resize((900,900)).save(filename)
         return filename
