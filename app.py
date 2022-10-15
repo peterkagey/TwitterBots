@@ -4,16 +4,16 @@ from botzier_curves.tweeter import BotzierCurves
 from robot_walks.tweeter import RobotWalks
 from xor_triangles.tweeter import XorTriangles
 from oeis_triangles.tweeter import OEISTriangles
+from botfons_needles.tweeter import BotfonsNeedles
 
 def handler(event, _):
   if not "account_name" in event:
     raise Error("Which account??")
   else:
     match event["account_name"]:
-      # case "@BotfonsNeedles":
-      #   bot = "BotfonsNeedles"
-      #   # Look up last tweet.
-      #   # Feed data to bot
+      case "@BotfonsNeedles":
+        account = BotfonsNeedles()
+        account.tweet()
       case "@BotzierCurves":
         account = BotzierCurves()
         account.tweet()
@@ -28,4 +28,4 @@ def handler(event, _):
         account = XorTriangles(modulus=3)
         account.tweet()
 
-handler({"account_name": "@oeisTriangles"}, 1)
+handler({"account_name": "@BotfonsNeedles"}, 1)
