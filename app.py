@@ -1,8 +1,9 @@
 import sys
 sys.path.append('/Users/peter/Programming/bot_central/')
-from botzier_curves.tweeter import BotzierCurvesTweeter
-from robot_walks.robot_walks_tweeter import RobotWalksTweeter
-from xor_triangles.tweeter import XorTrianglesTweeter
+from botzier_curves.tweeter import BotzierCurves
+from robot_walks.tweeter import RobotWalks
+from xor_triangles.tweeter import XorTriangles
+from oeis_triangles.tweeter import OEISTriangles
 
 def handler(event, _):
   if not "account_name" in event:
@@ -14,16 +15,17 @@ def handler(event, _):
       #   # Look up last tweet.
       #   # Feed data to bot
       case "@BotzierCurves":
-        account = BotzierCurvesTweeter()
+        account = BotzierCurves()
         account.tweet()
-      # case "@oeisTriangles":
-      #   account = "oeisTriangles"
+      case "@oeisTriangles":
+        account = OEISTriangles()
+        account.tweet()
       case "@RobotWalks":
         # TODO: read step_size and step_pattern from event.
-        account = RobotWalksTweeter()
+        account = RobotWalks()
         account.tweet(step_size=None, step_pattern=None)
       case "@xorTriangles":
-        account = XorTrianglesTweeter(modulus=3)
+        account = XorTriangles(modulus=3)
         account.tweet()
 
-handler({"account_name": "@xorTriangles"}, 1)
+handler({"account_name": "@oeisTriangles"}, 1)

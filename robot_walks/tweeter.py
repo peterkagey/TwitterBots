@@ -2,7 +2,7 @@ from tweeter import Tweeter
 from robot_walks.secrets import *
 from robot_walks.robot_walk_drawer import RobotWalkDrawer
 
-class RobotWalksTweeter(Tweeter):
+class RobotWalks(Tweeter):
     def __init__(self):
         super().__init__(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 

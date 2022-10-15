@@ -3,7 +3,7 @@ from botzier_curves.secrets import ACCESS_TOKEN, ACCESS_TOKEN_SECRET, API_KEY,AP
 from botzier_curves.curve_drawer import BezierCurveDrawer
 from botzier_curves.caption_maker import CaptionMaker
 
-class BotzierCurvesTweeter(Tweeter):
+class BotzierCurves(Tweeter):
     def __init__(self):
         super().__init__(API_KEY, API_KEY_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 

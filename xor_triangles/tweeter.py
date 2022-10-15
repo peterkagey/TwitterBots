@@ -4,7 +4,7 @@ from xor_triangles.triangle_drawer import TriangleDrawer
 from xor_triangles.seed_maker import SeedMaker
 from xor_triangles.triangle_grower import TriangleGrower
 
-class XorTrianglesTweeter(Tweeter):
+class XorTriangles(Tweeter):
   def __init__(self, modulus):
     super().__init__(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     self.modulus = modulus
