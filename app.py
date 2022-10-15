@@ -18,14 +18,14 @@ def handler(event, _):
         account = BotzierCurves()
         account.tweet()
       case "@oeisTriangles":
+        # TODO: allow user to specify a_number and tweet_copy
         account = OEISTriangles()
-        account.tweet()
+        account.tweet(a_number=None, tweet_copy=None)
       case "@RobotWalks":
         # TODO: read step_size and step_pattern from event.
         account = RobotWalks()
         account.tweet(step_size=None, step_pattern=None)
       case "@xorTriangles":
+        # TODO: allow user to specify seed and tweet_copy
         account = XorTriangles(modulus=3)
-        account.tweet()
-
-handler({"account_name": "@BotfonsNeedles"}, 1)
+        account.tweet(seed=None, tweet_copy=None)
