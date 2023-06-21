@@ -23,7 +23,6 @@ class RobotWalkDrawer:
       return (bits[0] - bits[1]) % self.step_size == 0
     pattern = random.randint(2**(steps - 1), 2**steps - 1)
     while is_invalid(pattern):
-      print(pattern, "was not valid!")
       pattern = random.randint(2**(steps - 1), 2**steps - 1)
     return pattern
 
@@ -82,7 +81,6 @@ class RobotWalkDrawer:
     self.trace_walks(lower_corner, image_size)
     del self.ctx
     if walk_height > 2048:
-      print("height is ", walk_height)
       img = img.resize((4096,2048), resample=Image.LANCZOS).quantize()
     file_name = "/tmp/robot_walk.png"
     img.save(file_name)

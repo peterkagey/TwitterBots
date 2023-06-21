@@ -24,24 +24,27 @@ class TriangleDrawer:
     height = math.ceil(2*self.r + 0.866 * self.s * (self.rows-1))
     width = 2*height
     top_point = (self.scale*width/2, self.scale*self.r)
-    img = Image.new("RGBA", (self.scale*width, self.scale*height), (255,255,255,0))  # create new Image
+    img = Image.new("P", (self.scale*width, self.scale*height))  # create new Image
+    img.putpalette(self.get_palette(), rawmode="RGBA")
     self.draw = ImageDraw.Draw(img)  # create drawing context
-    self.fill_hexagons(top_point, self.get_colors())
+    self.fill_hexagons(top_point)
     del self.draw  # destroy drawing context
     file_name = "/tmp/" + self.name + ".png"
     img = img.resize((width, height))
     img.save(file_name)
 
-  def get_colors(self):
-    color1 = (random.randint(50,100),random.randint(50,100),random.randint(50,100))
-    color2 = (random.randint(150,200),random.randint(150,200),random.randint(150,200))
-    return (color1, color2)
+  def get_palette(self):
+    return [
+      0, 0, 0, 0,
+      random.randint(50,100),random.randint(50,100),random.randint(50,100), 255,
+      random.randint(150,200),random.randint(150,200),random.randint(150,200), 255
+    ]
 
-  def fill_hexagons(self, top_point, colors):
+  def fill_hexagons(self, top_point):
     (x_t, y_t) = top_point
     for a in range(self.rows):
       for b in range(self.rows-a):
-        color = colors[self.tabl[a+b][b] % 2]
+        color_index = (self.tabl[a+b][b] % 2) + 1
         x = x_t - self.scale*self.s*(a-b)/2
         y = y_t + self.scale*0.866*self.s*(a+b)
-        self.draw_hexagon((x, y), color)
+        self.draw_hexagon((x, y), color_index)
